@@ -1,0 +1,176 @@
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ Copyright (c) 2010 Gerold Klinger and sourceheads Information Technology GmbH.
+  ~ All rights reserved.
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  ~ Contributors:
+  ~     ...
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+<idea-plugin version="2">
+    <id>DataNucleusIntegration</id>
+    <name>DataNucleus Enhancer integration</name>
+    <description><![CDATA[
+        WARNING: THIS (1.1.0-beta) IS A BETA RELEASE!<br/>
+        Read the rest of this plugins' description carefully before upgrading. If peculiar with stability stay with 1.0.8!<br/>
+        Also if updating-/trying to use- DataNucleus 3.1.x continue reading this description!<br/>
+        Before adding negative comments, try to get your setup straight and inquire help at the forum (<a href="http://www.datanucleus.org/servlet/forum/listthreads?forum=4">DataNucleus Forum/Tools</a>) - most of the problems occour due to erroneous mapping configuration or invalid usage of the underlying persistence implementation.<br/>
+        <br/>
+        Integration of the <a href="http://www.datanucleus.org">DataNucleus</a> JDO/JPA class enhancer in IDEA, including automatic class post-processing after
+        compilation.<br/>
+        Since version 1.0.5 officially part of the DataNucleus project - Thanks to Andy Jefferson for all the help.<br/>
+        <p>
+        Due to the vast changes made since the last release and the limited time for testing this project, this beta is let out into the wild, knowing that it won't/can't be a final
+        version.<br/>
+        Users of IDEA versions lower than 11.x will not benefit in any case from this "release", they won't even realize the changes (Due to compatibility issues only the old configuration dialogue - without any modification - is shown).<br/>
+        The extension API will stay backwards compatible, although the new feature(s) (manual enhancer dependencies) will not be supported (Extensions provided by myself will be updated soon)<br/>
+        Skip the next paragraph if you're not interested in supporting this plugin.<br/>
+        </p>
+        <p>
+        If you find this plugin useful/helpful please at least provide a rating on it's site (<a href="http://plugins.jetbrains.com/plugin?pr=idea&pluginId=5381">DataNucleus Enhancer integration</a>)
+        as there seem to be people out there who try to downrate without an appropriate reason (maybe just out of plain missing knowledge or inability to read documentation provided, but who knows? - just have a look at the comments).<br/>
+        </p>
+        <p>
+        Keep in mind that DataNucleus 3.1.x requires asm-4.x, which conflicts with any prior version. Sometimes asm is shipped even inside regular jar files or is included in a transitive fashion (e.g. via maven).
+        As a result, get your dependencies cleaned up and also look inside the jars you include!<br/>
+        </p>
+        <p>
+        The datanucleus enhancer is not packaged with this plugin, but it's, by default, taken from (each) project module to avoid version conflicts.<br/>
+        When manually setting enhancer dependencies this plugin tries to ignore the enhancer-relevant dependencies from the project module during the enhancement process.
+        This is done on a very simplistic (rather hacky) basis by just comparing the basenames (without version) of the manually added jars with the ones from the project module dependency list, so adapt the jar file names before adding them.<br/>
+        Tested with datanucleus-enhancer versions 3.0.x up to 3.1.x (Versions lower than that are not tested anymore, but -should- work)<br/>
+        See <a href="http://www.datanucleus.org/products/accessplatform_3_1/enhancer.html">enhancer documentation</a> for further information.<br/>
+        </p>
+        <p>
+        When inquiring help, please -at least- provide environment information (IDEA version, Plugin version, DataNucleus version,...) and a stack trace (from IDEA 'Messages' tab and/or IDEA log).<br/>
+        Inquiries missing such information will be ignored (In such cases nobody would waste -spare- time finding out).</br>
+        Suggestions on how to improve the plugin itself are nevertheless very welcome (ofcourse without any preconditions like mentioned above ;) ).<br/>
+        </p>
+        <p>
+        Documentation can be found here: <a href="http://www.datanucleus.org/products/accessplatform_3_0/guides/idea/index.html">DataNucleus and IntelliJ IDEA</a><br/>
+        Please consult the forum at <a href="http://www.datanucleus.org/servlet/forum/listthreads?forum=4">DataNucleus Forum/Tools</a>
+        in case of problems or improvement proposals - and -please- be aware that this is merely just a private project, so do not expect an utterly immediate response.<br/>
+        </p>
+        <p>
+        Features:<br/>
+        <ul>
+         <li>JDO and JPA support (API selectable via plugin configuration dialog).</li>
+         <li>Automatic datanucleus project module detection (enhancer and according dependencies have to be in the module classpath, except when using manual enhancer dependencies settings.</li>
+         <li>Manual enhancer dependencies settings, leaving it up to the user in which project modules enhancement should take place.</li>
+         <li>Annotation and metadata-file based enhancement.</li>
+         <li>Enhancer can be activated/deactivated for specific project modules.</li>
+         <li>Enhancement of test classes in separate build target folder (maven style).</li>
+         <li>Extension mechanism for adding additional enhancers (Since 1.0.6).</li>
+        </ul>
+        </p>
+        <p>
+        Additional Information:<br/>
+        <ul>
+         <li>Manually setting enhancer dependencies requires IDEA 11.x - Versions prior to 11.x will display the old configuration dialog and not gain any further advantage.</li>
+         <li>Initial activation (via selection in the configuration ui - for inclusion in enhancement process) of modules necessary after plugin installation.</li>
+         <li>Updating older plugin versions to >1.0.4 does not work, they must! be manually uninstalled before upgrading.</li>
+         <li>At least one build is required to update the list of affected classes (configuration dialog; only affects version lower than 1.0.6).</li>
+         <li>Since DataNucleus 3.1.x check your dependencies for rouge asm versions lower than 4.x (maybe also included directly into regular jar dependencies).</li>
+        </ul>
+        </p>
+        <p>
+        Known Issues:<br/>
+        <ul>
+         <li>After changing the implementation (Extension users only) or the api a click on the 'Apply' button is necessary to update the 'Affected Modules' list.</li>
+         <li>Checking out a project containing an .ipr/.ipl file and letting IDEA directly opening it in a new window can cause IDEA to block a modal plugin error message with a progress bar dialogue, thus rendering whole IDEA unusable. A workaround is to first do the checkout and then opening the project manually.</li>
+         <li>In IDEA versions 10.5.3 and below (not tested with 10.5.4) a full-rebuild sometimes exits with an Exception - as a workaround click the build button or restart IDEA (last resort 'solution').</li>
+        </ul>
+        </p>
+    ]]></description>
+    <version>1.1.0-beta1</version>
+    <change-notes><![CDATA[
+        <p>
+         <b>1.1.0-beta</b><br/>
+         Minimum required IDEA version is 10.5!<br/>
+         Tested with IDEA 10.5.4 only (Sorry for that, but my spare time is very limited), so be careful when upgrading!<br/>
+         Functionality -should- be retained for older IDEA versions, but is completely untested, so please really be careful.<br/>
+         - Manual enhancer dependencies (Will only be available for IDEA 11.x. Previous functionality (=v1.0.8) is retained for IDEA 10.5 and tested with 10.5.4 only!)<br/>
+         - Improved progress display (based on project module completion as there's no way to have a generic progress interface for multiple (completely independent) enhancers)<br/>
+         - Interruptable on a project module process basis (IDEA UI may stall until completion/error of the actual process in case of manual interruption; seems to be IDEA related)<br/>
+        </p>
+        <p>
+         <b>1.0.8</b><br/>
+         - DataNucleus 3.1.x support<br/>
+        </p>
+        <p>
+         <b>1.0.7</b><br/>
+         - Fixed test classes enhancement (additional bug, no regression)<br/>
+         - Fixed npe in 'Build' menu entry when no project is opened (additional bug, no regression - reported by Chris Colman)<br/>
+        </p>
+        <p>
+         <b>1.0.6</b><br/>
+         - Support for IDEA's incremental compilation (Only process classes that changed since last compilation)<br/>
+         - Extension API for including other enhancers<br/>
+        </p>
+        <p>
+         <b>1.0.5</b><br/>
+         - Fixed Exception when trying to access 'Build' menu entry without having any projects open<br/>
+         - Added missing JPA Annotations to metadata search (MappedSuperclass and Embeddable)<br/>
+         - Fixed parsing to include JDO .orm and JPA metadata files<br/>
+         - Additionally show class names affected by enhancer process (Configuration dialog)<br/>
+         - Automatically add metadata file extensions to 'Settings -> Compiler -> Resource patterns'<br/>
+        </p>
+        <p>
+         <b>1.0.4</b><br/>
+         - Added JPA support<br/>
+         - Fixed classes detection ("include test classes" exclusively selected just the test classes)<br/>
+         - Renamed project from "DataNucleus JDO enhancer integration" to "DataNucleus Enhancer integration"<br/>
+        </p>
+        <p>
+         <b>1.0.3</b><br/>
+         - Fixed OutOfMemoryError (PermGen; known (that was a hard one) - also reported in a post to the plugin's comments by an anonymous user)<br/>
+         - Fixed enabling/disabling enhancer per module (reduces warnings)<br/>
+         - Fixed enabling/disabling enhancer in build menu<br/>
+        </p>
+        <p>
+         <b>1.0.2</b><br/>
+         - Switched build to Maven 3<br/>
+         - Added license information<br/>
+         - Added minimal project setup documentation<br/>
+         - Prepared project for going open source<br/>
+        </p>
+        <p>
+         <b>1.0.1</b><br/>
+         - Updated plugin description<br/>
+        </p>
+    ]]></change-notes>
+    <vendor url="http://www.sourceheads.com/">sourceheads Information Technology GmbH</vendor>
+    <idea-version since-build="107.105"/><!-- IDEA 10.5 -->
+
+    <application-components>
+        <!-- Add your application components here -->
+    </application-components>
+
+    <project-components>
+        <component>
+            <implementation-class>org.datanucleus.ide.idea.DNEProjectComponent</implementation-class>
+        </component>
+    </project-components>
+
+    <actions>
+        <action id="ToggleDataNucleusEnhancer" class="org.datanucleus.ide.idea.DNEToggleEnableAction" text="DataNucleus Enhancer"
+                description="Enable/Disable DataNucleus JDO class enhancing">
+            <add-to-group group-id="BuildMenu" anchor="after" relative-to-action="Compile"/>
+        </action>
+    </actions>
+
+    <extensionPoints>
+        <extensionPoint name="datanucleusEnhancerExtension" interface="org.datanucleus.ide.idea.integration.EnhancerSupport"/>
+    </extensionPoints>
+
+</idea-plugin>

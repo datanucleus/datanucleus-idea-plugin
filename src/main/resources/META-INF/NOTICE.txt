@@ -1,0 +1,30 @@
+===============================================================================
+==  NOTICE file corresponding to section 4(d) of the Apache License,         ==
+==  Version 2.0, in this case for the Idea DataNucleus enhancer plugin       ==
+===============================================================================
+
+  Intellij Idea DataNucleus enhancer plugin
+  Copyright (c) 2010 Gerold Klinger and sourceheads Information Technology GmbH
+  All rights reserved
+
+===============================================================================
+This product was built and tested using following software:
+===============================================================================
+IntelliJ IDEA 9.0.3 Ultimate (IU-95.429)
+IntelliJ IDEA 10.0.3 Ultimate (IU-103.255)
+Apache Maven 3.0-beta-3
+Apache Maven 3.0.3
+org.codehaus.mojo/ideauidesigner-maven-plugin 1.0-beta-1
+
+===============================================================================
+This product includes software developed by many individuals, including
+the following:
+===============================================================================
+Gerold Klinger
+
+===============================================================================
+This product has included contributions from some individuals, including
+the following:
+===============================================================================
+..
+
