@@ -38,7 +38,7 @@ public class EnhancerProxyDataNucleus extends AbstractEnhancerProxy {
 
     public static final String NUCLEUS_ENHANCER_CLASS            = "JDODataNucleusEnhancer";
 
-    public static final String NUCLEUS_ENHANCER_CLASS_FQ         = "org.datanucleus.jdo." + NUCLEUS_ENHANCER_CLASS;
+    public static final String NUCLEUS_ENHANCER_CLASS_FQ         = "org.datanucleus.api.jdo." + NUCLEUS_ENHANCER_CLASS;
 
     public static final String NUCLEUS_GENERIC_ENHANCER_CLASS    = "DataNucleusEnhancer";
 
