@@ -32,7 +32,6 @@ public abstract class DeChatteringRadioButtonChangeListener implements ChangeLis
 
     private Boolean last = null;
 
-    @Override
     public void stateChanged(final ChangeEvent e) {
         final JRadioButton source = (JRadioButton) e.getSource();
         final boolean selected = source.isSelected();

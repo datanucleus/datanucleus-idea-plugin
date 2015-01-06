@@ -32,11 +32,6 @@ public class EnhancerSupportDatanucleus extends AbstractEnhancerSupport {
 
     private static final String NAME = "DataNucleus";
 
-    //
-    // Interface implementation
-    //
-
-    @SuppressWarnings("RefusedBequest")
     @Override
     @NotNull
     public EnhancerSupportVersion getVersion() {
@@ -48,7 +43,6 @@ public class EnhancerSupportDatanucleus extends AbstractEnhancerSupport {
      *
      * @return Enhancer support name
      */
-    @Override
     @NotNull
     public String getId() {
         return ID;
@@ -59,25 +53,21 @@ public class EnhancerSupportDatanucleus extends AbstractEnhancerSupport {
      *
      * @return Enhancer support name
      */
-    @Override
     @NotNull
     public String getName() {
         return NAME;
     }
 
-    @Override
     @NotNull
     public String[] getEnhancerClassNames() {
         return new String[] {EnhancerProxyDataNucleus.NUCLEUS_ENHANCER_CLASS, EnhancerProxyDataNucleus.NUCLEUS_GENERIC_ENHANCER_CLASS};
     }
 
-    @Override
     @NotNull
     public PersistenceApi[] getPersistenceApis() {
         return new PersistenceApi[] {PersistenceApi.JPA, PersistenceApi.JDO};
     }
 
-    @Override
     @NotNull
     public Class<?> getEnhancerProxyClass() {
         return EnhancerProxyDataNucleus.class;

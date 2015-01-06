@@ -43,8 +43,6 @@ class EnhancerSupportRegistryDefault implements EnhancerSupportRegistry {
         return instance;
     }
 
-    @Override
-    @SuppressWarnings("MagicCharacter")
     @NotNull
     public EnhancerSupport getEnhancerSupportById(@NotNull final String id) {
         final EnhancerSupport enhancerSupport = this.supported.get(id);
@@ -52,30 +50,25 @@ class EnhancerSupportRegistryDefault implements EnhancerSupportRegistry {
         return enhancerSupport;
     }
 
-    @Override
     public boolean isRegistered(@NotNull final String id) {
         return this.supported.get(id) != null;
     }
 
-    @Override
     @NotNull
     public EnhancerSupport getDefaultEnhancerSupport() {
         return DEFAULT_ENHANCER_SUPPORT;
     }
 
-    @Override
     @NotNull
     public Set<EnhancerSupport> getSupportedEnhancers() {
         return new LinkedHashSet<EnhancerSupport>(this.supported.values());
     }
 
-    @Override
     public void registerEnhancerSupport(@NotNull final EnhancerSupport enhancerSupport) {
         final String id = enhancerSupport.getId();
         this.supported.put(id, enhancerSupport);
     }
 
-    @Override
     public void unRegisterEnhanderSupport(@NotNull final EnhancerSupport enhancerSupport) {
         final String id = enhancerSupport.getId();
         this.supported.remove(id);

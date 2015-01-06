@@ -124,7 +124,6 @@ final class MetadataParser {
         return jpaClassNames;
     }
 
-    @SuppressWarnings("MagicCharacter")
     private static Set<String> parseQualifiedClassNamesJdoInternal(final Document doc, final String rootNodeName)
             throws XPathExpressionException {
 

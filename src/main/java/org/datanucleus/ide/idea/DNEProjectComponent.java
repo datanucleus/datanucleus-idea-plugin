@@ -131,7 +131,6 @@ public class DNEProjectComponent extends AbstractProjectComponent implements Con
         compilerManager.addCompiler(this.dNEComputable);
     }
 
-    @SuppressWarnings("RefusedBequest")
     @NonNls
     @NotNull
     @Override
@@ -151,14 +150,11 @@ public class DNEProjectComponent extends AbstractProjectComponent implements Con
     // PersistentStateComponent Interface implementation
     //
 
-    @Override
     public DNEPersistentState getState() {
         final DNEPersistentState dnePersistentState = new DNEPersistentState();
         return dnePersistentState.copyFrom(this.state);
     }
 
-    @SuppressWarnings("FeatureEnvy")
-    @Override
     public void loadState(final DNEPersistentState state) {
         this.state.copyFrom(state);
 
@@ -191,22 +187,18 @@ public class DNEProjectComponent extends AbstractProjectComponent implements Con
     //
 
     @Nls
-    @Override
     public String getDisplayName() {
         return "DataNucleus Enhancer";
     }
 
-    @Override
     public Icon getIcon() {
         return null;
     }
 
-    @Override
     public String getHelpTopic() {
         return null;
     }
 
-    @Override
     public JComponent createComponent() {
         if (this.configGuiForm == null) {
             this.configGuiForm = DNEConfigFormFactory.createConfigForm(this.getGuiState(), this.project.getBaseDir());
@@ -214,13 +206,10 @@ public class DNEProjectComponent extends AbstractProjectComponent implements Con
         return this.configGuiForm.getRootComponent();
     }
 
-    @Override
     public boolean isModified() {
         return this.configGuiForm.isModified();
     }
 
-    @SuppressWarnings("FeatureEnvy")
-    @Override
     public void apply() throws ConfigurationException {
         final GuiState guiState = new GuiState(this.state.getEnhancerSupportRegistry());
         this.configGuiForm.getData(guiState);
@@ -243,12 +232,10 @@ public class DNEProjectComponent extends AbstractProjectComponent implements Con
         this.reset();
     }
 
-    @Override
     public void reset() {
         this.configGuiForm.setData(this.getGuiState());
     }
 
-    @Override
     public void disposeUIResources() {
         this.configGuiForm = null;
     }
@@ -257,7 +244,6 @@ public class DNEProjectComponent extends AbstractProjectComponent implements Con
     // Gui interface
     //
 
-    @SuppressWarnings("FeatureEnvy")
     private GuiState getGuiState() {
         boolean indexReady = false;
         final boolean enhancerEnabled = this.state.isEnhancerEnabled();
@@ -299,7 +285,6 @@ public class DNEProjectComponent extends AbstractProjectComponent implements Con
                             dependencies);
     }
 
-    @SuppressWarnings("FeatureEnvy")
     private void setGuiState(final GuiState guiState) {
         final boolean enhancerEnabled = guiState.isEnhancerEnabled();
         final LinkedHashSet<String> metaDataExtensions = getMetaDataExtensionsSet(guiState.getMetaDataExtensions());
@@ -329,7 +314,6 @@ public class DNEProjectComponent extends AbstractProjectComponent implements Con
     // Gui model helper methods
     //
 
-    @SuppressWarnings("FeatureEnvy")
     private void filterEnhancerSupportedModules() {
         // TODO: hack to filter modules not supported by enhancer (filtering only possible after updating the state with enhancer settings)
         final List<AffectedModule> affectedModulesGuiModel = getAffectedModulesGuiModel();
@@ -348,7 +332,6 @@ public class DNEProjectComponent extends AbstractProjectComponent implements Con
         this.state.setEnabledModules(enhancerSupportedModules);
     }
 
-    @SuppressWarnings("FeatureEnvy")
     private List<AffectedModule> getAffectedModulesGuiModel() {
         final List<AffectedModule> moduleList = new ArrayList<AffectedModule>();
         final List<Module> affectedModules = IdeaProjectUtils.getDefaultAffectedModules(this.state.getEnhancerSupport(), this.project, this.state.isDependenciesManual());
@@ -387,7 +370,6 @@ public class DNEProjectComponent extends AbstractProjectComponent implements Con
         return createFilesGuiModel(annotatedClassFiles);
     }
 
-    @SuppressWarnings("FeatureEnvy")
     private static List<MetaDataOrClassFile> createFilesGuiModel(final Map<Module,
             List<VirtualMetadataFile>> metaDataOrAnnotatedClassFiles) {
 

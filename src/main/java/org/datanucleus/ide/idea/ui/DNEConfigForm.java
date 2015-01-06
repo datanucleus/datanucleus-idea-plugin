@@ -138,7 +138,6 @@ public class DNEConfigForm implements ConfigForm {
     private final DependenciesAddDeletePanel dependenciesAddDeletePanel;
     private JPanel modifiersPanel;
 
-    @SuppressWarnings("FeatureEnvy")
     public DNEConfigForm(@NotNull final GuiState guiState, @Nullable final VirtualFile projectRootDir) {
         this.guiStateBeforeChanges = guiState;
 
@@ -163,7 +162,6 @@ public class DNEConfigForm implements ConfigForm {
     // Interface with DNEProjectComponent
     //
 
-    @Override
     @NotNull
     public JComponent getRootComponent() {
         return this.parentPanel;
@@ -173,8 +171,6 @@ public class DNEConfigForm implements ConfigForm {
     // Gui methods
     //
 
-    @Override
-    @SuppressWarnings({"MagicNumber", "FeatureEnvy", "ChainedMethodCall"})
     public void setData(@NotNull final GuiState data) {
         this.guiStateBeforeChanges = new GuiState(data);
 
@@ -286,8 +282,6 @@ public class DNEConfigForm implements ConfigForm {
         this.dependenciesAddDeletePanel.resetDependencyList(enhancerSupport.getId(), persistenceApi, data.getDependencies());
     }
 
-    @Override
-    @SuppressWarnings({"FeatureEnvy", "MapReplaceableByEnumMap"})
     public void getData(@NotNull final GuiState data) {
         data.setEnhancerEnabled(this.enableEnhancerCheckBox.isSelected());
 
@@ -314,8 +308,6 @@ public class DNEConfigForm implements ConfigForm {
         data.setDependencies(this.dependenciesAddDeletePanel.getDependencies());
     }
 
-    @Override
-    @SuppressWarnings({"FeatureEnvy", "ChainedMethodCall"})
     public boolean isModified() {
         final GuiState before = this.guiStateBeforeChanges;
         if (this.enableEnhancerCheckBox.isSelected() != before.isEnhancerEnabled()) {
@@ -367,7 +359,6 @@ public class DNEConfigForm implements ConfigForm {
                 ? !affectedModules.equals(before.getAffectedModules()) : before.getAffectedModules() != null;
     }
 
-    @SuppressWarnings("FeatureEnvy")
     private void createUIComponents() {
         //
         // ComboBox for selecting persistence implementation
@@ -375,8 +366,6 @@ public class DNEConfigForm implements ConfigForm {
         this.persistenceImplComboBox = new JComboBox();
         this.persistenceImplComboBox.addItem(this.guiStateBeforeChanges.getEnhancerSupport().getName());
         this.persistenceImplComboBox.addActionListener(new ActionListener() {
-            @SuppressWarnings("MagicCharacter")
-            @Override
             public void actionPerformed(final ActionEvent e) {
 
                 if ("comboBoxChanged".equals(e.getActionCommand())) {
@@ -451,17 +440,14 @@ public class DNEConfigForm implements ConfigForm {
         this.metadataExtensionTextField = new JHintingTextField();
         ((JHintingTextField) this.metadataExtensionTextField).setEmptyTextHint(METADATA_FILE_DISABLED);
         this.metadataExtensionTextField.addKeyListener(new KeyListener() {
-            @Override
             public void keyTyped(final KeyEvent e) {
                 // do nothing
             }
 
-            @Override
             public void keyPressed(final KeyEvent e) {
                 // do nothing
             }
 
-            @Override
             public void keyReleased(final KeyEvent e) {
                 final String text = DNEConfigForm.this.metadataExtensionTextField.getText();
                 final String trimmedText = text.trim();
@@ -477,7 +463,6 @@ public class DNEConfigForm implements ConfigForm {
 
         this.dependenciesAddDeletePanel.setVisible(false);
         this.dependenciesAddDeletePanel.addActionListener(new ActionListener() {
-            @Override
             public void actionPerformed(final ActionEvent e) {
                 final String actionCommand = e.getActionCommand();
                 if (AbstractAddDeletePanel.EVENT_ADD.equals(actionCommand)
@@ -532,7 +517,6 @@ public class DNEConfigForm implements ConfigForm {
         return ret;
     }
 
-    @SuppressWarnings("ChainedMethodCall")
     private static boolean containsDisabledTokens(final String extensionsString) {
         boolean contains = false;
 

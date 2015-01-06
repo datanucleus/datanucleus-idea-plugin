@@ -145,7 +145,6 @@ public class DependenciesAddDeletePanel extends AbstractAddDeletePanel<VirtualFi
     // Methods overridable for further customization
     //
 
-    @SuppressWarnings("MethodMayBeStatic")
     @NotNull
     protected FileChooserDescriptor getFileChooserDescriptor() {
         return FILE_CHOOSER_DESCRIPTOR;
@@ -171,7 +170,6 @@ public class DependenciesAddDeletePanel extends AbstractAddDeletePanel<VirtualFi
         return ret;
     }
 
-    @SuppressWarnings("MapReplaceableByEnumMap")
     public void storeDependenciesForPreviousGuiState() {
         final List<VirtualFile> listItems = this.getListItems();
         Map<PersistenceApi, List<VirtualFile>> byEnhSupp = this.dependencies.get(this.enhancerSupportId);

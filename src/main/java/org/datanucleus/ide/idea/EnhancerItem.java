@@ -48,12 +48,10 @@ class EnhancerItem implements FileProcessingCompiler.ProcessingItem {
     }
 
     @NotNull
-    @Override
     public VirtualFile getFile() {
         return this.classFile;
     }
 
-    @Override
     public ValidityState getValidityState() {
         return new TimestampValidityState(this.classFile.getTimeStamp());
     }
@@ -62,7 +60,6 @@ class EnhancerItem implements FileProcessingCompiler.ProcessingItem {
         return this.virtualMetadata;
     }
 
-    @SuppressWarnings("MagicCharacter")
     @Override
     public String toString() {
         return "EnhancerItem{" +

@@ -187,7 +187,6 @@ final class IdeaProjectUtils {
      * @param packageName the package
      * @return the path
      */
-    @SuppressWarnings("MagicCharacter")
     public static String packageToPath(final String packageName) {
         return packageName.replace('.', '/');
     }
@@ -203,11 +202,8 @@ final class IdeaProjectUtils {
      * @param module           Module to search in
      * @return the query
      */
-    private static Query<PsiClass> createEnhancerClassQuery(final EnhancerSupport enhancerSupport,
-                                                            final Module module) {
+    private static Query<PsiClass> createEnhancerClassQuery(final EnhancerSupport enhancerSupport, final Module module) {
         return AllClassesSearch.search(module.getModuleWithLibrariesScope(), module.getProject(), new Condition<String>() {
-            @SuppressWarnings("ConstantConditions") // inspection going wrong as 'equals' variable changes during loop
-            @Override
             public boolean value(final String s) {
                 final String[] enhancerClassNames = enhancerSupport.getEnhancerClassNames();
                 boolean equals = false;

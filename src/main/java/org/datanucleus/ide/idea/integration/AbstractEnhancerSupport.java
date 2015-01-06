@@ -38,20 +38,17 @@ import org.jetbrains.annotations.Nullable;
  */
 public abstract class AbstractEnhancerSupport implements EnhancerSupport {
 
-    @Override
     @NotNull
     public EnhancerSupportVersion getVersion() {
         // V1.0.x as default
         return EnhancerSupportVersion.V1_0_X;
     }
 
-    @Override
     public boolean isSupported(final PersistenceApi persistenceApi) {
         final List<PersistenceApi> supported = Arrays.asList(this.getPersistenceApis());
         return supported.contains(persistenceApi);
     }
 
-    @Override
     @NotNull
     public List<String> getAnnotationNames() {
         final List<String> annotationNames = new ArrayList<String>(5);
@@ -63,14 +60,12 @@ public abstract class AbstractEnhancerSupport implements EnhancerSupport {
         return annotationNames;
     }
 
-    @Override
     @NotNull
     public PersistenceApi getDefaultPersistenceApi() {
         return this.getPersistenceApis()[0];
     }
 
     @Deprecated
-    @Override
     @NotNull
     public EnhancerProxy newEnhancerProxy(final PersistenceApi api,
                                           final CompileContext compileCtx,
@@ -88,7 +83,6 @@ public abstract class AbstractEnhancerSupport implements EnhancerSupport {
         return (EnhancerProxy) constructor.newInstance(api, compileCtx, module, persistenceUnitName);
     }
 
-    @Override
     @NotNull
     public EnhancerProxy newEnhancerProxy(final EnhancerContext enhancerContext)
             throws NoSuchMethodException,
@@ -104,7 +98,6 @@ public abstract class AbstractEnhancerSupport implements EnhancerSupport {
     }
 
     @NotNull
-    @Override
     public ClassLoader newClassLoader(@NotNull final CompileContext compileContext,
                                       @NotNull final Module module,
                                       @Nullable final Collection<String> excludedDependencies,

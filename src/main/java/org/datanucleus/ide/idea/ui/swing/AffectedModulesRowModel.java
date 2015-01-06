@@ -26,7 +26,6 @@ import org.datanucleus.ide.idea.ui.AffectedModule;
 
 /**
  */
-@SuppressWarnings("RefusedBequest")
 public class AffectedModulesRowModel extends AbstractTableModel {
 
     private static final long serialVersionUID = 1L;
@@ -41,12 +40,10 @@ public class AffectedModulesRowModel extends AbstractTableModel {
         return this.affectedModules;
     }
 
-    @Override
     public int getRowCount() {
         return this.affectedModules.size();
     }
 
-    @Override
     public int getColumnCount() {
         return 2;
     }
@@ -66,7 +63,6 @@ public class AffectedModulesRowModel extends AbstractTableModel {
         return columnIndex == 0;
     }
 
-    @Override
     public Object getValueAt(final int rowIndex, final int columnIndex) {
         final AffectedModule am = this.affectedModules.get(rowIndex);
         return columnIndex == 0 ? am.isEnabled() : am.getName();

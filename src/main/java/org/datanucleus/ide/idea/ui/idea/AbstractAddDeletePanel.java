@@ -53,6 +53,7 @@ import org.jetbrains.annotations.Nullable;
 
 public abstract class AbstractAddDeletePanel<T> extends PanelWithButtons implements ComponentWithEmptyText {
 
+    private static final long serialVersionUID = -7740893424756192196L;
     public static final String EVENT_INIT = "AddDeletePanelINIT";
     public static final String EVENT_ADD = "AddDeletePanelADD";
     public static final String EVENT_REMOVE = "AddDeletePanelREMOVE";
@@ -92,14 +93,10 @@ public abstract class AbstractAddDeletePanel<T> extends PanelWithButtons impleme
     // Implementation
     //
 
-    @SuppressWarnings("RefusedBequest")
     @Override
     protected void initPanel() {
-        final ToolbarDecorator decorator = ToolbarDecorator.createDecorator(this.listComponent)
-                .disableUpAction()
-                .disableDownAction()
+        final ToolbarDecorator decorator = ToolbarDecorator.createDecorator(this.listComponent).disableUpAction().disableDownAction()
                 .setAddAction(new AnActionButtonRunnable() {
-                    @Override
                     public void run(final AnActionButton button) {
                         final List<T> itemsToAdd = findItemsToAdd();
                         AbstractAddDeletePanel.this.addElements(itemsToAdd);
@@ -109,14 +106,12 @@ public abstract class AbstractAddDeletePanel<T> extends PanelWithButtons impleme
         setLayout(new BorderLayout());
         add(decorator.createPanel(), BorderLayout.CENTER);
         this.listComponent.addListSelectionListener(new ListSelectionListener() {
-            @Override
             public void valueChanged(final ListSelectionEvent e) {
                 AbstractAddDeletePanel.this.translator.translate(e);
             }
         });
     }
 
-    @Override
     public StatusText getEmptyText() {
         return this.listComponent.getEmptyText();
     }
@@ -293,7 +288,6 @@ public abstract class AbstractAddDeletePanel<T> extends PanelWithButtons impleme
             this.actionListeners.clear();
         }
 
-        @SuppressWarnings("ValueOfIncrementOrDecrementUsed")
         private void fireEvent(final ListSelectionEvent actEvent, final String command) {
             final ActionEvent ev = new ActionEvent(actEvent.getSource(), this.evId++, command);
             for (final ActionListener actionListener : this.actionListeners) {

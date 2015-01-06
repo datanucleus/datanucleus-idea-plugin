@@ -43,17 +43,14 @@ public class MetadataOrClassFilesRowModel implements TableModel {
         }
     }
 
-    @Override
     public int getRowCount() {
         return this.files.size();
     }
 
-    @Override
     public int getColumnCount() {
         return 4;
     }
 
-    @Override
     public String getColumnName(final int columnIndex) {
         final String columnName;
         switch (columnIndex) {
@@ -75,18 +72,14 @@ public class MetadataOrClassFilesRowModel implements TableModel {
         return columnName;
     }
 
-    @Override
     public Class<?> getColumnClass(final int columnIndex) {
         return String.class;
     }
 
-    @Override
     public boolean isCellEditable(final int rowIndex, final int columnIndex) {
         return false;
     }
 
-    @SuppressWarnings("FeatureEnvy")
-    @Override
     public Object getValueAt(final int rowIndex, final int columnIndex) {
         final MetaDataOrClassFile moc = this.files.get(rowIndex);
 
@@ -110,17 +103,14 @@ public class MetadataOrClassFilesRowModel implements TableModel {
         return ret;
     }
 
-    @Override
     public void setValueAt(final Object aValue, final int rowIndex, final int columnIndex) {
         // do nothing
     }
 
-    @Override
     public void addTableModelListener(final TableModelListener l) {
         // do nothing
     }
 
-    @Override
     public void removeTableModelListener(final TableModelListener l) {
         // do nothing
     }

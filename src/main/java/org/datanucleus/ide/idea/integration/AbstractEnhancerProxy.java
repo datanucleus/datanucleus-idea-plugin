@@ -50,7 +50,6 @@ public abstract class AbstractEnhancerProxy implements EnhancerProxy {
     //
 
     // V1.1.x Constructor
-    @SuppressWarnings({"RedundantThrowsDeclaration", "FeatureEnvy"})
     protected AbstractEnhancerProxy(final EnhancerContext enhancerContext)
             throws IOException,
                    ClassNotFoundException,
@@ -70,7 +69,6 @@ public abstract class AbstractEnhancerProxy implements EnhancerProxy {
      * @deprecated  V1.0.x Constructor, kept for backwards compatibility only!
      */
     @Deprecated
-    @SuppressWarnings("RedundantThrowsDeclaration")
     protected AbstractEnhancerProxy(final PersistenceApi api,
                                     final CompileContext compileContext,
                                     final Module module,

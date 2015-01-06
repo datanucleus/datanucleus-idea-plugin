@@ -271,7 +271,6 @@ public class GuiState {
         return result;
     }
 
-    @SuppressWarnings("MagicCharacter")
     @Override
     public String toString() {
         return "GuiState{" +
@@ -301,7 +300,6 @@ public class GuiState {
         return copyAffectedModules;
     }
 
-    @SuppressWarnings({"KeySetIterationMayUseEntrySet", "MapReplaceableByEnumMap"})
     private static Map<String, Map<PersistenceApi, List<VirtualFile>>> deepCopyDependencies(final Map<String, Map<PersistenceApi, List<VirtualFile>>> dependencies) {
         final Map<String, Map<PersistenceApi, List<VirtualFile>>> bySuppId = new LinkedHashMap<String, Map<PersistenceApi, List<VirtualFile>>>();
 

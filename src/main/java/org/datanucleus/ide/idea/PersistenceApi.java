@@ -36,7 +36,6 @@ public enum PersistenceApi {
 
     private final String[] annotationClassNames;
 
-    @SuppressWarnings("AssignmentToCollectionOrArrayFieldFromParameter") // no outside reference
     PersistenceApi(final String... annotationClassNames) {
         this.annotationClassNames = annotationClassNames;
     }

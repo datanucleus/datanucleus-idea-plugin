@@ -201,7 +201,6 @@ class DNEState {
      *
      * @param state the instance to retrieve the values from
      */
-    @SuppressWarnings({"FeatureEnvy", "ChainedMethodCall", "MapReplaceableByEnumMap"})
     public void copyFrom(final DNEPersistentState state) {
         this.enhancerEnabled = state.isEnhancerEnabled();
 

@@ -76,7 +76,6 @@ public class AffectedModule implements Serializable {
         return result;
     }
 
-    @SuppressWarnings("MagicCharacter")
     @Override
     public String toString() {
         return "AffectedModule{" + "enabled=" + this.enabled + ", name='" + this.name + '\'' + '}';

@@ -56,7 +56,6 @@ import java.awt.Shape;
  * @author Sebastian Haufe
  * @version $Revision: 1.1 $ as of $Date: 2009/04/08 19:13:04 $
  */
-@SuppressWarnings("ChainedMethodCall")
 public class JHintingTextField extends JTextField {
 
     /**
@@ -141,7 +140,6 @@ public class JHintingTextField extends JTextField {
 
             private static final int GAP = 0;
 
-            @Override
             public void paint(final Graphics g, final int p0, final int p1, final Shape bounds, final JTextComponent c) {
 
                 final String hint = (String) c.getClientProperty("emptyTextHint");

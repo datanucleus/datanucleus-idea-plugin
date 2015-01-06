@@ -73,7 +73,6 @@ import org.jetbrains.annotations.Nullable;
  * <br>
  * Failure stacktraces are transformed into strings and written to the ideaX messages output.
  */
-@SuppressWarnings("FeatureEnvy")
 class DNEComputable implements ClassPostProcessingCompiler {
 
     private static final Logger IDEA_LOGGER  = Logger.getInstance(DNEComputable.class);
@@ -112,7 +111,6 @@ class DNEComputable implements ClassPostProcessingCompiler {
     //
 
     @NotNull
-    @Override
     public FileProcessingCompiler.ProcessingItem[] getProcessingItems(final CompileContext cCtx) {
         LOGGER.update(this.state, cCtx, null);
 
@@ -156,10 +154,7 @@ class DNEComputable implements ClassPostProcessingCompiler {
         }
     }
 
-    @SuppressWarnings("FeatureEnvy")
-    @Override
-    public FileProcessingCompiler.ProcessingItem[] process(final CompileContext cCtx,
-                                                           final FileProcessingCompiler.ProcessingItem[] processingItems) {
+    public FileProcessingCompiler.ProcessingItem[] process(final CompileContext cCtx, final FileProcessingCompiler.ProcessingItem[] processingItems) {
         final long startTimestamp = System.currentTimeMillis();
         LOGGER.update(this.state, cCtx, null);
         LOGGER.debug("Processing items selected for enhancement: " + toString(processingItems));
@@ -260,17 +255,14 @@ class DNEComputable implements ClassPostProcessingCompiler {
     }
 
     @NotNull
-    @Override
     public String getDescription() {
         return "DataNucleus Enhancer";
     }
 
-    @Override
     public boolean validateConfiguration(final CompileScope compileScope) {
         return true;
     }
 
-    @Override
     public ValidityState createValidityState(final DataInput dataInput) throws IOException {
         return TimestampValidityState.load(dataInput);
     }
@@ -279,7 +271,6 @@ class DNEComputable implements ClassPostProcessingCompiler {
     // Helper methods
     //
 
-    @SuppressWarnings("FeatureEnvy")
     private int enhanceInModules(final CompileContext cCtx,
                                  final Collection<Module> affectedModules,
                                  final Map<Module, List<VirtualMetadataFile>> moduleBasedMetadataFiles,
@@ -383,7 +374,6 @@ class DNEComputable implements ClassPostProcessingCompiler {
         return count;
     }
 
-    @SuppressWarnings("FeatureEnvy")
     private static int enhancePerModule(final EnhancerSupport enhancerSupport,
                                         final PersistenceApi api,
                                         final CompileContext cCtx,
@@ -517,7 +507,6 @@ class DNEComputable implements ClassPostProcessingCompiler {
     // Utility methods
     //
 
-    @SuppressWarnings("FeatureEnvy")
     private static EnhancerContext createEnhancerContext(final EnhancerSupport enhancerSupport,
                                                          final PersistenceApi api,
                                                          final CompileContext cCtx,
@@ -537,7 +526,7 @@ class DNEComputable implements ClassPostProcessingCompiler {
      * @param eCtx            .
      * @return                .
      */
-    @SuppressWarnings({"FeatureEnvy", "deprecation"})
+    @SuppressWarnings({"deprecation"})
     private static EnhancerProxy createEnhancerProxy(final EnhancerContext eCtx, final EnhancerSupport enhancerSupport)
             throws EnhancerProxyCreationException {
 
@@ -587,14 +576,12 @@ class DNEComputable implements ClassPostProcessingCompiler {
      * @return .
      */
     // TODO: cleanup, as this seems to be very hacky
-    @SuppressWarnings("FeatureEnvy")
     Map<Module, List<VirtualMetadataFile>> getAnnotatedClassFiles(@Nullable final CompileScope compileScope) {
         final LinkedHashMap<Module, List<VirtualMetadataFile>> moduleBasedFiles = new LinkedHashMap<Module, List<VirtualMetadataFile>>();
 
         final Application application = ApplicationManager.getApplication();
         application.runReadAction(new Runnable() {
 
-            @Override
             public void run() {
                 final CompileScope projectCompileScope = compileScope == null
                         ? CompilerManager.getInstance(DNEComputable.this.project).createProjectCompileScope(DNEComputable.this.project)
@@ -666,7 +653,6 @@ class DNEComputable implements ClassPostProcessingCompiler {
      * @return .
      */
     // TODO: cleanup, as this seems to be very hacky
-    @SuppressWarnings("FeatureEnvy")
     Map<Module, List<VirtualMetadataFile>> getMetadataFiles(@Nullable final CompileScope compileScope) {
         final Set<String> extensions;
         if (this.state.getMetaDataExtensions() == null || this.state.getMetaDataExtensions().isEmpty()) {
@@ -685,7 +671,6 @@ class DNEComputable implements ClassPostProcessingCompiler {
 
         final Application application = ApplicationManager.getApplication();
         application.runReadAction(new Runnable() {
-            @Override
             public void run() {
                 if (affectedModules.length > 0) {
 

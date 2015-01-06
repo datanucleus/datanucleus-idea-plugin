@@ -105,7 +105,6 @@ public class DNEConfigFormV10x implements ConfigForm {
     //
 
     @NotNull
-    @Override
     public JComponent getRootComponent() {
         return this.configPanel;
     }
@@ -114,8 +113,6 @@ public class DNEConfigFormV10x implements ConfigForm {
     // Gui methods
     //
 
-    @Override
-    @SuppressWarnings({"MagicNumber", "FeatureEnvy", "ChainedMethodCall"})
     public void setData(@NotNull final GuiState data) {
         this.guiState = new GuiState(data);
 
@@ -214,8 +211,6 @@ public class DNEConfigFormV10x implements ConfigForm {
         this.metaDataAndClassesScrollPane.setVisible(data.isEnhancerInitialized());
     }
 
-    @Override
-    @SuppressWarnings("FeatureEnvy")
     public void getData(@NotNull final GuiState data) {
         data.setEnhancerEnabled(this.enableEnhancerCheckBox.isSelected());
 
@@ -239,8 +234,6 @@ public class DNEConfigFormV10x implements ConfigForm {
         data.setDependenciesManual(false);
     }
 
-    @Override
-    @SuppressWarnings({"FeatureEnvy", "ChainedMethodCall"})
     public boolean isModified() {
         final GuiState data = this.guiState;
         if (this.enableEnhancerCheckBox.isSelected() != data.isEnhancerEnabled()) {
@@ -281,7 +274,6 @@ public class DNEConfigFormV10x implements ConfigForm {
         return affectedModules != null ? !affectedModules.equals(data.getAffectedModules()) : data.getAffectedModules() != null;
     }
 
-    @SuppressWarnings("FeatureEnvy")
     private void createUIComponents() {
 
         //
@@ -289,8 +281,6 @@ public class DNEConfigFormV10x implements ConfigForm {
 
         this.persistenceImplComboBox = new JComboBox();
         this.persistenceImplComboBox.addActionListener(new ActionListener() {
-            @SuppressWarnings("MagicCharacter")
-            @Override
             public void actionPerformed(final ActionEvent e) {
 
                 if ("comboBoxChanged".equals(e.getActionCommand())) {
@@ -328,17 +318,14 @@ public class DNEConfigFormV10x implements ConfigForm {
         this.metadataExtensionTextField = new JHintingTextField();
         ((JHintingTextField) this.metadataExtensionTextField).setEmptyTextHint(METADATA_FILE_DISABLED);
         this.metadataExtensionTextField.addKeyListener(new KeyListener() {
-            @Override
             public void keyTyped(final KeyEvent e) {
                 // do nothing
             }
 
-            @Override
             public void keyPressed(final KeyEvent e) {
                 // do nothing
             }
 
-            @Override
             public void keyReleased(final KeyEvent e) {
                 final String text = DNEConfigFormV10x.this.metadataExtensionTextField.getText();
                 final String trimmedText = text.trim();
@@ -373,7 +360,6 @@ public class DNEConfigFormV10x implements ConfigForm {
         return ret;
     }
 
-    @SuppressWarnings("ChainedMethodCall")
     private static boolean containsDisabledTokens(final String extensionsString) {
         boolean contains = false;
 

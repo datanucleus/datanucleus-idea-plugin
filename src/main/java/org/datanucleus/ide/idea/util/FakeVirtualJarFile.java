@@ -39,7 +39,6 @@ import org.jetbrains.annotations.Nullable;
  * Date: 10.09.12
  * Time: 19:11
  */
-@SuppressWarnings("MagicCharacter")
 public class FakeVirtualJarFile extends VirtualFile {
 
     private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];

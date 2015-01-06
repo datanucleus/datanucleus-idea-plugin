@@ -89,7 +89,6 @@ public class DNEComputableLoggerWrapper {
         // this.uiLogMsg(CompilerMessageCategory.INFORMATION, message);
     }
 
-    @SuppressWarnings("ConstantConditions")
     private static String msgForLog(final DNEState state, @Nullable final Module module, final String msg) {
         final EnhancerSupport enhancerSupport = state == null ? null : state.getEnhancerSupport();
         final PersistenceApi persistenceApi = state == null ? null : state.getApi();
@@ -99,7 +98,6 @@ public class DNEComputableLoggerWrapper {
         return MessageFormat.format("Enhancer | {0}[{1}] |{2}| " + msg, eSuppName, persApiName, modName);
     }
 
-    @SuppressWarnings("MagicCharacter")
     private void uiLogMsg(final CompilerMessageCategory cat, final String msg) {
         if (this.cCtx != null) {
             final EnhancerSupport enhancerSupport = this.state.getEnhancerSupport();
@@ -107,11 +105,6 @@ public class DNEComputableLoggerWrapper {
         } else {
             this.logger.warn("UI message logger called, but no CompileContext available. Original message: " + msg);
         }
-    }
-
-    @SuppressWarnings("ObjectEquality")
-    private boolean isCurrentInstance(final DNEComputableLoggerWrapper logger) {
-        return this == logger;
     }
 
 }

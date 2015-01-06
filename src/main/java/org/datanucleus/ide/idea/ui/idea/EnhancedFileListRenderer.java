@@ -31,7 +31,6 @@ import org.datanucleus.ide.idea.util.VirtualFileUtils;
 
 public class EnhancedFileListRenderer extends ColoredListCellRenderer {
 
-    @SuppressWarnings("MagicCharacter")
     @Override
     protected void customizeCellRenderer(final JList list, final Object value, final int index, final boolean selected, final boolean hasFocus) {
         // paint selection only as a focus rectangle

@@ -179,7 +179,6 @@ public class DNEPersistentState { // has to be public (for IDEA configuration ac
      * @param state plugin's internal state
      * @return persistent copy of plugin's internal state
      */
-    @SuppressWarnings({"FeatureEnvy", "ChainedMethodCall", "KeySetIterationMayUseEntrySet"})
     public DNEPersistentState copyFrom(final DNEState state) {
         this.enhancerEnabled = state.isEnhancerEnabled();
 

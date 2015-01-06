@@ -84,7 +84,6 @@ public class EnhancerProxyDataNucleus extends AbstractEnhancerProxy {
     // Method implementation
     //
 
-    @Override
     public void addClasses(final String... classNames) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         final Object parameter = convertVarargsParameter(classNames);
         final Object parameterClassesArray = Array.newInstance(String.class, 0);
@@ -92,7 +91,6 @@ public class EnhancerProxyDataNucleus extends AbstractEnhancerProxy {
         invokeMethod("addClasses", new Class[]{parameterClassesArray.getClass()}, parameter);
     }
 
-    @Override
     public void addMetadataFiles(final String... metadataFiles) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         final Object parameter = convertVarargsParameter(metadataFiles);
         final Object parameterClassesArray = Array.newInstance(String.class, 0);
@@ -100,7 +98,6 @@ public class EnhancerProxyDataNucleus extends AbstractEnhancerProxy {
         invokeMethod("addFiles", new Class[]{parameterClassesArray.getClass()}, parameter);
     }
 
-    @Override
     public int enhance() throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         return (Integer) invokeMethod("enhance", NO_PARAMETER_TYPES);
     }

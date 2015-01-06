@@ -260,7 +260,6 @@ public class ColumnAdjuster implements PropertyChangeListener, TableModelListene
     //  PropertyChangeListener Interface
     //
 
-    @Override
     public void propertyChange(final PropertyChangeEvent e) {
         //  When the TableModel changes we need to update the listeners
         //  and column widths
@@ -279,7 +278,6 @@ public class ColumnAdjuster implements PropertyChangeListener, TableModelListene
     //  TableModelListener interface
     //
 
-    @Override
     public void tableChanged(final TableModelEvent e) {
         if (!this.isColumnDataIncluded) { return; }
 
@@ -352,7 +350,6 @@ public class ColumnAdjuster implements PropertyChangeListener, TableModelListene
     /*
       *  Action to adjust or restore the width of a single column or all columns
       */
-    @SuppressWarnings("CloneableClassInSecureContext")
     class ColumnAction extends AbstractAction {
 
         private static final long serialVersionUID = 1L;
@@ -366,7 +363,6 @@ public class ColumnAdjuster implements PropertyChangeListener, TableModelListene
             this.isAdjust = isAdjust;
         }
 
-        @Override
         public void actionPerformed(final ActionEvent e) {
             //  Handle selected column(s) width change actions
 
@@ -392,7 +388,6 @@ public class ColumnAdjuster implements PropertyChangeListener, TableModelListene
       *  Toggle properties of the TableColumnAdjuster so the user can
       *  customize the functionality to their preferences
       */
-    @SuppressWarnings("CloneableClassInSecureContext")
     class ToggleAction extends AbstractAction {
 
         private static final long serialVersionUID = 1L;
@@ -406,7 +401,6 @@ public class ColumnAdjuster implements PropertyChangeListener, TableModelListene
             this.isToggleLarger = isToggleLarger;
         }
 
-        @Override
         public void actionPerformed(final ActionEvent e) {
             if (this.isToggleDynamic) {
                 setDynamicAdjustment(!ColumnAdjuster.this.isDynamicAdjustment);
