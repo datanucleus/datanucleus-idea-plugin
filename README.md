@@ -11,5 +11,4 @@ where it was moved to for DataNucleus 3.2
 KeyFacts
 --------
 __License__ : Apache 2 licensed  
-__Issue Tracker__ : http://www.datanucleus.org/servlet/jira/browse/NUCIDEA  
-__RoadMap__ : http://issues.datanucleus.org/browse/NUCIDEA?report=com.atlassian.jira.plugin.system.project:roadmap-panel  
+__Issue Tracker__ : https://github.com/datanucleus/datanucleus-idea-plugin/issues  
